@@ -1,0 +1,11 @@
+[package]
+name = "favicon_maker"
+version = "0.1.0"
+license = "MIT"
+authors = ["Jason Willems <jason@willems.ca>"]
+
+[dependencies]
+image = "0.13.0"
+#impageproc = "0.8.0"
+imageproc = { git = "https://github.com/at1as/imageproc" }
+rusttype = "0.2"
