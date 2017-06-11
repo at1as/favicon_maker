@@ -1,6 +1,6 @@
 # Favicon Maker
 
-Favicon Maker will quickly build a simple favicons from a template for webprojects 
+Favicon Maker will quickly create a set of very simple favicons from a template. See screenshots below.
 
 
 ### Usage
