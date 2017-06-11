@@ -60,8 +60,8 @@ $ cargo run 10 60
 * Horizontal Scale : 65%
 
 <div>
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM.jpg" width="150px" style="margin:10px; padding:10px">
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM_scale_65_percent.jpg" width="150px" style="margin:10px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM.jpg" width="150px" style="margin:20px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM_scale_65_percent.jpg" width="150px" style="margin:20px; padding:10px">
 </div>
 
 ### Example - Output Shifted
@@ -70,9 +70,10 @@ $ cargo run 10 60
 * Horizontal Shift : 30%
 * Horizontal Scale : 80% (the default. The above is idential to `cargo run 30 80`)
 
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II.jpg" width="150px">
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II_shift_30_percent.jpg" width="150px">
-
+<div>
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II.jpg" width="150px" style="margin:20px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II_shift_30_percent.jpg" width="150px" style="margin:20px; padding:10px">
+</div>
 
 ### Notes:
 
