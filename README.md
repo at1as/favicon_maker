@@ -59,9 +59,10 @@ $ cargo run 10 60
 * Horizontal Shift : 0%
 * Horizontal Scale : 65%
 
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM.jpg" width="150px">
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM_scale_65_percent.jpg" width="150px">
-
+<div>
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM.jpg" width="150px" style="margin:10px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM_scale_65_percent.jpg" width="150px" style="margin:10px; padding:10px">
+</div>
 
 ### Example - Output Shifted
 
