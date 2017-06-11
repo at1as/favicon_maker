@@ -1,6 +1,6 @@
 # Favicon Maker
 
-Favicon Maker will quickly build a simple favicons from a template for webprojects 
+Favicon Maker will quickly create a set of very simple favicons from a template. See screenshots below.
 
 
 ### Usage
@@ -50,8 +50,30 @@ $ cargo run 10 60
 
 ### Example Output
 
-<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/favicon512.png" width="200px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/favicon512.png" width="150px">
 
+
+### Example – Output Scaled
+
+`cargo run` versus `cargo run 0 65`
+* Horizontal Shift : 0%
+* Horizontal Scale : 65%
+
+<div>
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM.jpg" width="150px" style="margin:20px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_MM_scale_65_percent.jpg" width="150px" style="margin:20px; padding:10px">
+</div>
+
+### Example - Output Shifted
+
+`cargo run` versus `cargo run 30`
+* Horizontal Shift : 30%
+* Horizontal Scale : 80% (the default. The above is idential to `cargo run 30 80`)
+
+<div>
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II.jpg" width="150px" style="margin:20px; padding:10px">
+<img src="https://raw.githubusercontent.com/at1as/favicon_maker/master/output/example_favicon_II_shift_30_percent.jpg" width="150px" style="margin:20px; padding:10px">
+</div>
 
 ### Notes:
 
