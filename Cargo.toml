@@ -6,6 +6,6 @@ authors = ["Jason Willems <jason@willems.ca>"]
 
 [dependencies]
 image = "0.13.0"
-#impageproc = "0.8.0"
 imageproc = { git = "https://github.com/at1as/imageproc" }
 rusttype = "0.2"
+serde_json = "0.9"

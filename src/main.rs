@@ -53,9 +53,19 @@ pub fn create_favicon(txt: &str, filepath: &str, dimensions: u32) {
 
   /* Font Parameters */
   let font = include_bytes!("assets/DejaVuSans.ttf") as &[u8];
+  
+  let horizontal_compression: f32 = match env::args().nth(2) {
+    Some(h_compression) => {
+      h_compression.parse::<f32>().unwrap_or(80.0) / 100 as f32
+    },
+    _ =>
+      0.8
+  };
+  let vertical_compression = 0.8;
+
   let scale = Scale {
-    x: (dimensions as f32) * 0.8,
-    y: (dimensions as f32) * 0.8
+    x: (dimensions as f32) * horizontal_compression,
+    y: (dimensions as f32) * vertical_compression
   };
 
   let horizontal_offset: u32 = match env::args().nth(1) {
