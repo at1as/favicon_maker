@@ -1,33 +1,40 @@
 extern crate image;
 extern crate imageproc;
 extern crate rusttype;
+extern crate serde_json;
 
 use imageproc::drawing::{draw_text_mut, draw_filled_rect_mut};
 use imageproc::rect::Rect;
 use image::{Rgb, RgbImage};
 use rusttype::Scale;
+use serde_json::Value;
 use std::env;
 use std::path::Path;
+use std::fs::File;
+use std::io::Read;
 
 
 pub fn main() {
 
-  /* 
-     Usage: 
-      cargo run {favicon text} {horizontal offset as % (positive number)}
-      cargo run FM 30
-   */
-  let icon_text: String = match env::args().nth(1) {
-    Some(icon_text) => icon_text.to_string(),
-    None => "FM".to_string() /* Default FaviconMaker "FM" */
-  };
+  let conf_file = "src/conf.json";
+  let icon_text = parse_json(conf_file, "text").to_string().replace("\"", "");
+  let sizes     = parse_json(conf_file, "sizes");
 
-  create_favicon(&icon_text, "./favicon.ico",    16u32);
-  create_favicon(&icon_text, "./favicon32.png",  32u32);
-  create_favicon(&icon_text, "./favicon48.png",  48u32); 
-  create_favicon(&icon_text, "./favicon64.png",  64u32); 
-  create_favicon(&icon_text, "./favicon512.png", 512u32); 
+  for i in 0..100 {
+    if sizes[i].is_null() { break; }
+    
+    let img_size = sizes[i]["pixels"].to_string().parse::<u32>().unwrap();
+    let img_format = sizes[i]["format"].to_string().replace("\"", "");
+
+    create_favicon(
+      &icon_text,
+      &format!("./output/favicon{}.{}", &img_size, &img_format),
+      img_size
+    );
+  }
+
 }
+
 
 pub fn create_favicon(txt: &str, filepath: &str, dimensions: u32) {
 
@@ -38,19 +45,20 @@ pub fn create_favicon(txt: &str, filepath: &str, dimensions: u32) {
   let path = Path::new(filepath);
   let mut image = RgbImage::new(dimensions, dimensions);
 
-  draw_filled_rect_mut(&mut image,
-                       Rect::at(font_offset as i32, font_offset as i32).of_size(dimensions - font_offset, dimensions - font_offset),
-                       black);
+  draw_filled_rect_mut(
+    &mut image,
+    Rect::at(font_offset as i32, font_offset as i32).of_size(dimensions - font_offset, dimensions - font_offset),
+    black
+  );
 
   /* Font Parameters */
   let font = include_bytes!("assets/DejaVuSans.ttf") as &[u8];
-  let height = dimensions; 
   let scale = Scale {
-    x: (height as f32) * 0.8,
-    y: (height as f32) * 0.8
+    x: (dimensions as f32) * 0.8,
+    y: (dimensions as f32) * 0.8
   };
 
-  let horizontal_offset: u32 = match env::args().nth(2) {
+  let horizontal_offset: u32 = match env::args().nth(1) {
     Some(h_offset) => {
       let percent_offset = h_offset.parse::<f32>().unwrap_or(0.0) / 100 as f32;
       (percent_offset * dimensions as f32) as u32
@@ -60,8 +68,21 @@ pub fn create_favicon(txt: &str, filepath: &str, dimensions: u32) {
   };
   let vertical_offset = dimensions as f32 * 0.1;
 
-
   draw_text_mut(&mut image, white, horizontal_offset, vertical_offset as u32, scale, font, &txt.trim());
 
   let _ = image.save(path).unwrap();
 }
+
+
+pub fn parse_json(filename: &str, key_name: &str) -> Value {
+  
+  let path = Path::new(filename);
+  let mut data = File::open(&path).unwrap();
+  let mut contents = String::new();
+  data.read_to_string(&mut contents);
+
+  let v: Value = serde_json::from_str(contents.as_str()).unwrap();
+
+  v[key_name].to_owned()
+}
+

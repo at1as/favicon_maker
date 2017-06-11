@@ -1,0 +1,16 @@
+{
+  "sizes": [
+    {"pixels": 16,  "format": "ico"},
+    {"pixels": 16,  "format": "jpg"},
+    {"pixels": 16,  "format": "png"},
+    {"pixels": 32,  "format": "jpg"},
+    {"pixels": 32,  "format": "png"},
+    {"pixels": 48,  "format": "jpg"},
+    {"pixels": 48,  "format": "png"},
+    {"pixels": 64,  "format": "jpg"},
+    {"pixels": 64,  "format": "png"},
+    {"pixels": 512, "format": "jpg"},
+    {"pixels": 512, "format": "png"}
+  ],
+  "text": "FM"
+}
